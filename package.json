@@ -1,0 +1,53 @@
+{
+  "name": "domain-looker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Bulk domain availability pre-checks powered by official RDAP data — paste up to 100 domains or URLs and get registration status, registrar, and nameservers.",
+  "author": "Alex Jardine",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "rdap",
+    "domain",
+    "domain-availability",
+    "whois",
+    "react",
+    "express",
+    "typescript"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n web,api -c cyan,magenta \"vite --host 127.0.0.1\" \"tsx watch server/index.ts\"",
+    "dev:demo": "concurrently -k -n web,api -c cyan,magenta \"vite --host 127.0.0.1\" \"tsx watch server/index.ts --demo\"",
+    "build": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.server.json && vite build",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "test": "vitest run",
+    "start": "node dist-server/index.js",
+    "start:demo": "node dist-server/index.js --demo",
+    "preview": "npm run build && npm run start"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "express": "^4.21.2",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tldts": "^7.0.17",
+    "vite": "^7.1.12",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/express": "^4.17.25",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.0.14",
+    "@types/react-dom": "^19.0.9",
+    "@types/supertest": "^6.0.3",
+    "concurrently": "^9.2.1",
+    "jsdom": "^26.1.0",
+    "supertest": "^7.1.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.8"
+  }
+}
