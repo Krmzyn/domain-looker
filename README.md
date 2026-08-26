@@ -2,6 +2,8 @@
 
 **Paste a list of domains or URLs and get their registration status in bulk, using official [RDAP](https://www.icann.org/rdap) data — no API keys, no spreadsheets, no manual WHOIS lookups.**
 
+> **Built with:** React 19, TypeScript, Vite, Express, Zod, `tldts`, Node.js, Vitest, Testing Library, and the official IANA RDAP bootstrap plus registry RDAP services.
+
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6.svg)
 ![React](https://img.shields.io/badge/React-19-61dafb.svg)
