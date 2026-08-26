@@ -9,9 +9,7 @@
 ![React](https://img.shields.io/badge/React-19-61dafb.svg)
 ![Node](https://img.shields.io/badge/Node-%E2%89%A5%2020.19-3c873a.svg)
 
-<!-- After publishing, enable the CI badge:
 [![CI](https://github.com/Krmzyn/domain-looker/actions/workflows/ci.yml/badge.svg)](https://github.com/Krmzyn/domain-looker/actions/workflows/ci.yml)
--->
 
 ![Domain Looker checking a list of domains and URLs](docs/screenshot-desktop.png)
 
@@ -278,3 +276,5 @@ runs. Security reports go through the process in [SECURITY.md](SECURITY.md).
 ## License
 
 [MIT](LICENSE) © Alex Jardine
+
+Created by [Alex Jardine](https://github.com/Krmzyn).
