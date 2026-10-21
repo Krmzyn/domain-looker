@@ -6,7 +6,7 @@
 
 ### Prerequisites
 
-- **Node.js ≥ 20.19** (or ≥ 22.12) and npm. Built and tested on Node 24.
+- Node.js ≥ 20.19 (or ≥ 22.12) and npm. Built and tested on Node 24.
 - Outbound HTTPS access to `data.iana.org` and public RDAP servers, *or* use
   [demo mode](#demo-mode-offline), which needs no network.
 
@@ -31,12 +31,13 @@ npm run dev
 
 Vite proxies `/api` to the backend automatically, so you only need to open the frontend URL.
 
-> **Windows convenience:** double-clicking `Launch Domain Looker.cmd` installs dependencies (if
+> [!TIP]
+> On Windows, double-clicking `Launch Domain Looker.cmd` installs dependencies (if
 > needed) and starts `npm run dev`.
 
 #### Demo mode (offline)
 
-Explore the full UI with simulated, deterministic results and **no network calls**:
+Explore the full UI with simulated, deterministic results and no network calls:
 
 ```bash
 npm run dev:demo
@@ -47,7 +48,7 @@ Only the RDAP results are faked. A banner in the UI makes the mode obvious.
 
 ### Environment variables
 
-All variables are **optional**. Domain Looker needs no keys, tokens, or database. Copy the
+All variables are optional. Domain Looker needs no keys, tokens, or database. Copy the
 template and edit if you like:
 
 ```bash
@@ -92,33 +93,33 @@ PORT=8080 npm start
 
 Domain Looker is designed to hold onto as little as possible:
 
-- **No accounts, no tracking, no analytics, no cookies.** The frontend talks only to its own API.
-- **No persistence.** Results live in an **in-memory cache for 15 minutes** and are gone when the
+- No accounts, no tracking, no analytics, no cookies. The frontend talks only to its own API.
+- No persistence. Results live in an in-memory cache for 15 minutes and are gone when the
   server stops. Nothing is written to disk or a database.
-- **The domains you check leave your server** only as RDAP lookups to the relevant public registry
+- The domains you check leave your server only as RDAP lookups to the relevant public registry
   RDAP endpoints (and the IANA bootstrap file). That's inherent to how RDAP works: the registry
   has to answer the query. If a list of domains is sensitive, run in [demo mode](#demo-mode-offline)
   or against a private RDAP mirror.
-- **No secrets to leak.** There are no API keys or credentials anywhere in the project.
+- No secrets to leak. There are no API keys or credentials anywhere in the project.
 
 ## Known limitations
 
-- **Pre-check, not a purchase check.** "Likely available" reflects RDAP only; premium, reserved,
+- Pre-check, not a purchase check. "Likely available" reflects RDAP only; premium, reserved,
   and restricted names can still be unbuyable. See the RDAP note above.
-- **RDAP coverage is uneven.** gTLDs are well covered; some ccTLDs still publish no RDAP server and
+- RDAP coverage is uneven. gTLDs are well covered; some ccTLDs still publish no RDAP server and
   come back as `Unsupported`.
-- **In-memory, single-process cache.** No shared/persistent cache; each server instance caches on
+- In-memory, single-process cache. No shared/persistent cache; each server instance caches on
   its own, and restarts clear it.
-- **100 inputs per request** by design, to stay polite and responsive.
-- **Not a hardened multi-tenant service.** It's a self-hosted tool: no auth, no per-user rate
+- 100 inputs per request by design, to stay polite and responsive.
+- Not a hardened multi-tenant service. It's a self-hosted tool: no auth, no per-user rate
   limiting. Run it somewhere you trust.
 
 ## Roadmap
 
-- Optional **registrar availability/pricing provider** implementing the existing
+- Optional registrar availability/pricing provider implementing the existing
   `registrarAvailability` interface (turn "likely available" into "available for $X").
-- **Persistent / shared caching** (e.g. Redis) for multi-instance deployments.
-- **Env-configurable** concurrency and timeouts.
-- **File import** (upload a `.txt`/`.csv` of domains) and larger batch sizes with pagination.
-- **Saved lists & re-checks** to watch a set of domains over time.
-- **Dark mode.**
+- Persistent / shared caching (e.g. Redis) for multi-instance deployments.
+- Env-configurable concurrency and timeouts.
+- File import (upload a `.txt`/`.csv` of domains) and larger batch sizes with pagination.
+- Saved lists & re-checks to watch a set of domains over time.
+- Dark mode.

@@ -37,23 +37,24 @@ development, Vite proxies `/api` to the backend on port 3001.
 
 Domain Looker never guesses at where to look. For each request it:
 
-1. **Loads the IANA RDAP bootstrap** (`https://data.iana.org/rdap/dns.json`) and caches it for
+1. Loads the IANA RDAP bootstrap (`https://data.iana.org/rdap/dns.json`) and caches it for
    24 hours. This maps every TLD to its authoritative RDAP base URL. If a refresh fails, the last
    good copy is reused.
-2. **Resolves each domain's TLD** to an RDAP base URL (preferring `https://`).
-3. **Requests `{base}/domain/{name}`** with an `application/rdap+json` `Accept` header and maps the
+2. Resolves each domain's TLD to an RDAP base URL (preferring `https://`).
+3. Requests `{base}/domain/{name}` with an `application/rdap+json` `Accept` header and maps the
    response to a status:
 
 | RDAP response | Status | Meaning |
 | --- | --- | --- |
-| `200` with a `domain` object | **Registered** | The registry returned a domain record (registrar & nameservers are parsed out). |
-| `404` | **Likely available** | The registry has no record. A *pre-check only*, not a guarantee of purchasability. |
-| `429` | **Rate-limited** | The RDAP server asked us to slow down (any `Retry-After` is surfaced). |
-| Other non-2xx / bad body | **Unknown** | The lookup didn't produce a reliable answer. |
-| TLD missing from bootstrap | **Unsupported** | No RDAP server is published for that TLD yet. |
-| Input can't be normalized | **Invalid** | The line isn't a usable domain. |
+| `200` with a `domain` object | Registered | The registry returned a domain record (registrar & nameservers are parsed out). |
+| `404` | Likely available | The registry has no record. A *pre-check only*, not a guarantee of purchasability. |
+| `429` | Rate-limited | The RDAP server asked us to slow down (any `Retry-After` is surfaced). |
+| Other non-2xx / bad body | Unknown | The lookup didn't produce a reliable answer. |
+| TLD missing from bootstrap | Unsupported | No RDAP server is published for that TLD yet. |
+| Input can't be normalized | Invalid | The line isn't a usable domain. |
 
-> **A "Likely available" result is not a guarantee.** RDAP only tells you whether a registry has a
+> [!NOTE]
+> A "Likely available" result is not a guarantee. RDAP only tells you whether a registry has a
 > record. A domain can be unregistered in RDAP yet still be premium-priced, reserved, blocked, or
 > otherwise not purchasable at a registrar. Always confirm at a registrar before you rely on it.
 

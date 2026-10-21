@@ -38,7 +38,7 @@ npm run build      # production build of both frontend and backend
 - **Don't commit secrets or personal data.** There are none in this repo today,
   and there shouldn't be any tomorrow. Local config belongs in `.env` (ignored).
 - **Keep RDAP behavior honest.** A "likely available" result is a pre-check, not
-  a guarantee — keep UI copy and docs accurate about that distinction.
+  a guarantee, so keep UI copy and docs accurate about that distinction.
 
 ## Reporting bugs and ideas
 

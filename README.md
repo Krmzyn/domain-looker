@@ -28,7 +28,8 @@ Open <http://127.0.0.1:5173>. Demo results are simulated and labeled in the inte
 - Distinguishes registered, likely available, invalid, unsupported, rate-limited and unknown results.
 - Filters results and exports CSV, with duplicate inputs collapsed before lookup.
 
-**Likely available is a pre-check.** An RDAP 404 does not establish that a registrar will sell a domain. Reserved, restricted and premium-priced names still need a registrar check.
+> [!NOTE]
+> Likely available is a pre-check. An RDAP 404 does not establish that a registrar will sell a domain. Reserved, restricted and premium-priced names still need a registrar check.
 
 ## Engineering decisions
 
