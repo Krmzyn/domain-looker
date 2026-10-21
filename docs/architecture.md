@@ -9,12 +9,12 @@ API that does the RDAP work.
 
 ```mermaid
 flowchart LR
-  UI["Frontend<br/>React + Vite<br/><small>paste, normalize, filter, CSV export</small>"]
-  API["Backend<br/>Express + TypeScript<br/><small>zod validation, normalization,<br/>RDAP orchestration, result cache</small>"]
-  RDAP[("IANA RDAP bootstrap<br/>and registry RDAP servers<br/><small>public, no auth</small>")]
-  UI -- "POST /api/check<br/>{ inputs: string[] }" --> API
-  API -- "CheckResponse" --> UI
-  API -- "HTTPS" --> RDAP
+  UI["Frontend: React + Vite"]
+  API["Backend: Express + TypeScript"]
+  RDAP[("Public RDAP servers")]
+  UI -->|POST /api/check| API
+  API -->|CheckResponse| UI
+  API -->|HTTPS| RDAP
 ```
 
 **Frontend** (`src/`): React 19 + Vite 7. A single `App` component manages the input, calls
